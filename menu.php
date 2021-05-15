@@ -35,6 +35,7 @@
                             ?>
                             <li><a href="produto.php">Produtos</a></li>
                                     <li><a href="sms.php">SMS <?php if($sms->rowCount()>0){?>(<?= $sms->rowCount() ?>) <?php }?></a></li>
+                                    <li><a href="publicidades.php">Publicidades</a></li>
                             <?php
                                 }
                             ?>
