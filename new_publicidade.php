@@ -63,6 +63,7 @@ include_once 'menu.php';
                         $arquivo_tmp=$_FILES['foto']['tmp_name'];
                         $descricao = $_POST['descricao'];
                         $estado = $_POST['estado'];
+                        $title = $_POST['title'];
                         $foto = null;
 
                         if($arquivo==""):

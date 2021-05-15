@@ -13,6 +13,7 @@ class Publicidade
     private $foto;
     private $descricao;
     private $estado;
+    private $title;
 
     public $sql;
     public $comando;
@@ -81,12 +82,31 @@ class Publicidade
         $this->id = $id;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+
+
 
     public function insert(PDO $connection){
-            $this->sql = "insert into publicidades  (foto, descricao, estado) values(?,?,?)";
+            $this->sql = "insert into publicidades  (foto, title, descricao, estado) values(?,?,?,?)";
             $this->comando = $connection->prepare($this->sql);
             $this->comando->execute(array(
                 $this->getFoto(),
+                $this->getTitle(),
                 $this->getDescricao(),
                 $this->getEstado(),
             ));
@@ -95,10 +115,11 @@ class Publicidade
     }
 
     public function update(PDO $connection){
-        $this->sql = "update publicidades set  foto=?, descricao=?, estado=? where id=?";
+        $this->sql = "update publicidades set  foto=?, title = ?, descricao=?, estado=? where id=?";
         $this->comando = $connection->prepare($this->sql);
         $this->comando->execute(array(
             $this->getFoto(),
+            $this->getTitle(),
             $this->getDescricao(),
             $this->getEstado(),
             $this->getId(),
