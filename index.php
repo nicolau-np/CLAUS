@@ -155,7 +155,7 @@ include_once 'menu.php';
                                 <img class="d-block w-100" height="400px" src="controller/upload/<?= $view->foto ?>"
                                      alt="First slide"/>
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>Publicidades</h5>
+                                    <h5><?= $view->title ?></h5>
                                     <p><?= $view->descricao ?></p>
                                 </div>
                             </div>
