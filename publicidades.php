@@ -54,7 +54,7 @@ include_once 'menu.php';
 
             <div class="col-lg-12">
                 <div class="contact-option">
-                    <h4>Produtos</h4> &nbsp;&nbsp;&nbsp;&nbsp;  <a href="new_publicidade.php">Novo</a>
+                    <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp;  <a href="new_publicidade.php">Novo</a>
 
                     <?php
                     if(isset($_GET['sms'])){?>
