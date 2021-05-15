@@ -64,16 +64,13 @@ include_once 'menu.php';
 
                     <?php
                     if(isset($_GET['delete'])){?>
-                        <div class="alert alert-success">Eliminou produto com sucesso</div>
+                        <div class="alert alert-success">Eliminou publicidade com sucesso</div>
                         <?php
                     }?>
                     <table class="table table-bordered table-striped" style="color: white">
                         <thead>
                         <tr>
                             <th>Foto</th>
-                            <th>Nome</th>
-                            <th>Valor</th>
-                            <th>Categoria</th>
                             <th>Descrição</th>
                             <th>Estado</th>
                             <th>Operacões</th>
