@@ -3,9 +3,9 @@ include "controller/sessao_controller.controller.php";
 include_once "model/Publicidade.php";
 
 Connector::ReturnConnection();
-if(!isset($_GET['id'])){
+if (!isset($_GET['id'])) {
     $ids = $_SESSION['idS'];
-}else{
+} else {
     $_SESSION['idS'] = $_GET['id'];
     $ids = $_GET['id'];
 }
@@ -65,37 +65,39 @@ include_once 'menu.php';
 
             <div class="col-lg-12">
                 <div class="contact-option">
-                    <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp; <a href="produto.php">Listar</a>
+                    <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp; <a href="publicidades.php">Listar</a>
 
 
                     <?php
-                    if(isset($_POST['btn'])){
-                        $arquivo=$_FILES['foto']['name'];
-                        $arquivo_tmp=$_FILES['foto']['tmp_name'];
+                    if (isset($_POST['btn'])) {
+                        $arquivo = $_FILES['foto']['name'];
+                        $arquivo_tmp = $_FILES['foto']['tmp_name'];
                         $descricao = $_POST['descricao'];
                         $estado = $_POST['estado'];
                         $id = $_POST['id_publicidade'];
+                        $title = $_POST['title'];
                         $foto = null;
 
-                        if($arquivo==""):
+                        if ($arquivo == ""):
 
                             $foto = $view->foto;
                         else:
-                            $foto=$arquivo;
+                            $foto = $arquivo;
                             //mover a foto para a pasta
-                            $destino='controller/upload/'.$arquivo;
-                            $arquivo_tmp1=$arquivo_tmp;
-                            unlink('controller/upload/'.$view->foto);
-                            move_uploaded_file($arquivo_tmp1,$destino);
+                            $destino = 'controller/upload/' . $arquivo;
+                            $arquivo_tmp1 = $arquivo_tmp;
+                            unlink('controller/upload/' . $view->foto);
+                            move_uploaded_file($arquivo_tmp1, $destino);
                         endif;
 
                         $objPublicidade->setFoto($foto);
                         $objPublicidade->setDescricao($descricao);
                         $objPublicidade->setEstado($estado);
                         $objPublicidade->setId($id);
+                        $objPublicidade->setTitle($title);
 
                         $resultado = $objPublicidade->update(Connector::ReturnConnection());
-                        if($resultado=="yes"){
+                        if ($resultado == "yes") {
                             header("location: publicidades.php?sms=ok");
                         }
 
@@ -103,15 +105,19 @@ include_once 'menu.php';
                     ?>
 
                     <?php
-                    if(isset($_GET['sms'])){?>
+                    if (isset($_GET['sms'])) {
+                        ?>
                         <div class="alert alert-success">Publicidade Adicionada com sucesso</div>
                         <?php
-                    }?>
+                    } ?>
 
                     <form enctype="multipart/form-data" method="POST" action="edit_publicidade.php">
                         <div class="row">
-
-                            <div class="col-md-4"><input type="file" class="form-control" name="foto"/></div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="title" placeholder="Titulo"
+                                       value="<?= $view->title ?>" required/>
+                            </div>
+                            <div class="col-md-5"><input type="file" class="form-control" name="foto"/></div>
 
 
                             <div class="col-md-3">
@@ -121,8 +127,10 @@ include_once 'menu.php';
                                     <option>off</option>
                                 </select>
                             </div>
+                            <br/><br/>
                             <div class="col-md-4">
-                            <textarea name="descricao" class="form-control" placeholder="Descrição do Produto" cols="4" rows="5" required >
+                            <textarea name="descricao" class="form-control" placeholder="Descrição do Produto" cols="4"
+                                      rows="5" required>
                                     <?= $view->descricao ?>
                             </textarea>
                             </div>
