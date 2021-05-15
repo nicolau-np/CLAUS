@@ -91,19 +91,26 @@ include "controller/sessao_controller.controller.php";
                     </div>
                 </div>
                 <div class="col-lg-7">
+                    <div class="resposta">
+                        <?php
+                        if(isset($_GET['sms'])){?>
+                        <div class="alert alert-success">Mensagem enviada com sucesso</div>
+                        <?php
+                        }?>
+                    </div>
                     <div class="contact-option">
                         <h4>Deixa tua mensagem</h4>
-                        <form action="#" class="comment-form contact-form">
+                        <form action="controller/enviarSMS.php" class="comment-form contact-form" method="POST">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input type="text" placeholder="Seu nome">
+                                    <input type="text" placeholder="Seu nome" name="nome" required>
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" placeholder="E-mail">
+                                    <input type="email" placeholder="E-mail" name="email" required>
                                 </div>
                                 <div class="col-lg-12">
-                                    <textarea placeholder="Mensagem"></textarea>
-                                    <button type="submit" class="site-btn">Enviar Mensagem</button>
+                                    <textarea placeholder="Mensagem" name="sms" required></textarea>
+                                    <button type="submit" class="site-btn" name="bt_envio">Enviar Mensagem</button>
                                 </div>
                             </div>
                         </form>

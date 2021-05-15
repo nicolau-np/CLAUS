@@ -15,6 +15,8 @@ $keepDataUsrs->execute(array($usuario, $pass));
 
 //echo "<a href='sair.controller.php'>SAIR</a>";
 
+
+
 if($QTD_Keepd > 0){
     
     $_SESSION["id"] = $UserData->id;

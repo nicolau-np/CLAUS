@@ -63,15 +63,16 @@ include "controller/sessao_controller.controller.php";
         <div class="container">
             <div class="row">
             <?php
-            $pegar_produtos = Connector::ReturnConnection()->prepare("SELECT * FROM `produtos`");
-            $pegar_produtos->execute();
+            $estado = "on";
+            $pegar_produtos = Connector::ReturnConnection()->prepare("SELECT * FROM `produtos` where estado=?");
+            $pegar_produtos->execute(array($estado));
 
             while($produtos = $pegar_produtos->fetch(PDO::FETCH_OBJ)){ ?>
                 <div class="col-lg-6">
                     <div class="blog-item">
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="bi-pic set-bg" data-setbg="controller/<?=$produtos->foto?>"></div>
+                                <div class="bi-pic set-bg" data-setbg="controller/upload/<?=$produtos->foto?>"></div>
                                 
                             </div>
                             <div class="col-lg-6">
@@ -79,8 +80,8 @@ include "controller/sessao_controller.controller.php";
                                 <div class="bi-text">
 
                                     <ul>
-                                        <li><i class="fa fa-calendar-o"></i> <?=$produtos->data?></li>
-                                        <li style="color: white"> <?=$produtos->valor?></li>
+                                        <li><i class="fa fa-calendar-o"></i> <?= date('d-m-Y', strtotime($produtos->data))?></li>
+                                        <li style="color: white"> <?=number_format($produtos->valor,2,',','.')?></li>
                                     </ul>
                                     <h4><a href="#"><?=$produtos->produto?></a></h4>
                                     <h5 style="color: white"> Categória: <?=$produtos->categoria?></h5>

@@ -28,9 +28,9 @@ include "controller/sessao_controller.controller.php";
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
+   <!-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div>-->
 
     <!-- Header Section Begin -->
     <?php
@@ -62,9 +62,11 @@ include "controller/sessao_controller.controller.php";
     <div class="blog-section spad">
         <div class="container">
             <div class="row">
-            <?php 
-            $pegar_carrinho = Connector::ReturnConnection()->prepare("SELECT * FROM `carrinho` WHERE id_user = ?");
-            $pegar_carrinho->execute(array($_SESSION['id']));
+            <?php
+
+            $estado1="on";
+            $pegar_carrinho = Connector::ReturnConnection()->prepare("SELECT * FROM `carrinho` WHERE id_user = ? and estado = ?");
+            $pegar_carrinho->execute(array($_SESSION['id'], $estado1));
             ?>
              <div class="span12">
                     <!-- BEGIN PAGINATION PORTLET-->
@@ -86,8 +88,10 @@ include "controller/sessao_controller.controller.php";
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php 
+                                <?php
                                 $total = 0;
+                                if($pegar_carrinho->rowCount()>0){
+
                                 while($carrinho = $pegar_carrinho->fetch(PDO::FETCH_OBJ)){ 
                                     $pegar_produto = Connector::ReturnConnection()->prepare("SELECT * FROM `produtos` WHERE id = ?");
                                     $pegar_produto->execute(array($carrinho->id_produto));
@@ -95,16 +99,18 @@ include "controller/sessao_controller.controller.php";
                                     $produto = $pegar_produto->fetch(PDO::FETCH_OBJ);
 
                                     $total = $total + $produto->valor;
+
                                 ?>
                                     <tr>
                                         <td><span ><?=$produto->produto?></span></td>
                                         <td><span ><?=$produto->categoria?></span></td>
-                                        <td><span ><?=$produto->valor?></span></td>
+                                        <td><span ><?= number_format($produto->valor,2,',','.')?></span></td>
                                     </tr>
-                                <?php } ?> 
+                                <?php }
+                                }?>
                                 </tbody>
                             </table>
-                            <label style="color: white" >Total: <b><?=$total?></b></label>
+                            <label style="color: white" >Total: <b><?= number_format($total,2,',','.')?></b></label>
                         </div>
                     </div>
                     <!-- END PAGINATION PORTLET -->
@@ -115,7 +121,7 @@ include "controller/sessao_controller.controller.php";
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="blog-btn">
-                        <a href="#" class="primary-btn">Comprar</a>
+                        <a href="report/makePDF.php" class="primary-btn">Comprar</a>
                     </div>
                 </div>
             </div>

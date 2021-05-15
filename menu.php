@@ -4,9 +4,16 @@
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
                     <?php
+
+
+                    $estado = "on";
+
+                    $sms = Connector::ReturnConnection()->prepare("select *from sms where estado=?");
+                    $sms->execute(array($estado));
+
                         $id = isset($_SESSION['id']) ? $_SESSION['id'] : "" ;
-                        $pegar_carrinho = Connector::ReturnConnection()->prepare("SELECT * FROM `carrinho` WHERE id_user = ?");
-                        $pegar_carrinho->execute(array($id));
+                        $pegar_carrinho = Connector::ReturnConnection()->prepare("SELECT * FROM `carrinho` WHERE id_user = ? and estado=?");
+                        $pegar_carrinho->execute(array($id, $estado));
 
                         $qtd_carrinho = $pegar_carrinho->rowCount();
 
@@ -26,7 +33,8 @@
                             <?php
                                 if(isset($_SESSION['nivel_acesso']) && $_SESSION['nivel_acesso'] == "admin"){
                             ?>
-                            <li><a href="add_produtos.php">Add Produtos</a></li>
+                            <li><a href="produto.php">Produtos</a></li>
+                                    <li><a href="sms.php">SMS <?php if($sms->rowCount()>0){?>(<?= $sms->rowCount() ?>) <?php }?></a></li>
                             <?php
                                 }
                             ?>
