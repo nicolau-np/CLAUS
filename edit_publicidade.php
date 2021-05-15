@@ -3,9 +3,16 @@ include "controller/sessao_controller.controller.php";
 include_once "model/Publicidade.php";
 
 Connector::ReturnConnection();
+<<<<<<< HEAD
 if (!isset($_GET['id'])) {
     $ids = $_SESSION['idS'];
 } else {
+=======
+if(!isset($_GET['id'])){
+    //header('location:produto.php');
+    $ids = $_SESSION['idS'];
+}else{
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
     $_SESSION['idS'] = $_GET['id'];
     $ids = $_GET['id'];
 }
@@ -65,6 +72,7 @@ include_once 'menu.php';
 
             <div class="col-lg-12">
                 <div class="contact-option">
+<<<<<<< HEAD
                     <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp; <a href="publicidades.php">Listar</a>
 
 
@@ -88,16 +96,45 @@ include_once 'menu.php';
                             $arquivo_tmp1 = $arquivo_tmp;
                             unlink('controller/upload/' . $view->foto);
                             move_uploaded_file($arquivo_tmp1, $destino);
+=======
+                    <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp; <a href="produto.php">Listar</a>
+
+
+                    <?php
+                    if(isset($_POST['btn'])){
+                        $arquivo=$_FILES['foto']['name'];
+                        $arquivo_tmp=$_FILES['foto']['tmp_name'];
+                        $descricao = $_POST['descricao'];
+                        $estado = $_POST['estado'];
+                        $foto = null;
+
+                        if($arquivo==""):
+
+                            $foto = $view->foto;
+                        else:
+                            $foto=$arquivo;
+                            //mover a foto para a pasta
+                            $destino='controller/upload/'.$arquivo;
+                            $arquivo_tmp1=$arquivo_tmp;
+                            unlink('controller/upload/'.$view->foto);
+                            move_uploaded_file($arquivo_tmp1,$destino);
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
                         endif;
 
                         $objPublicidade->setFoto($foto);
                         $objPublicidade->setDescricao($descricao);
                         $objPublicidade->setEstado($estado);
+<<<<<<< HEAD
                         $objPublicidade->setId($id);
                         $objPublicidade->setTitle($title);
 
                         $resultado = $objPublicidade->update(Connector::ReturnConnection());
                         if ($resultado == "yes") {
+=======
+
+                        $resultado = $objPublicidade->update(Connector::ReturnConnection());
+                        if($resultado=="yes"){
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
                             header("location: publicidades.php?sms=ok");
                         }
 
@@ -105,6 +142,7 @@ include_once 'menu.php';
                     ?>
 
                     <?php
+<<<<<<< HEAD
                     if (isset($_GET['sms'])) {
                         ?>
                         <div class="alert alert-success">Publicidade Adicionada com sucesso</div>
@@ -118,6 +156,17 @@ include_once 'menu.php';
                                        value="<?= $view->title ?>" required/>
                             </div>
                             <div class="col-md-5"><input type="file" class="form-control" name="foto"/></div>
+=======
+                    if(isset($_GET['sms'])){?>
+                        <div class="alert alert-success">Publicidade Adicionada com sucesso</div>
+                        <?php
+                    }?>
+
+                    <form enctype="multipart/form-data" method="POST" action="edit_publicidade.php">
+                        <div class="row">
+
+                            <div class="col-md-4"><input type="file" class="form-control" name="foto"/></div>
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
 
 
                             <div class="col-md-3">
@@ -127,6 +176,7 @@ include_once 'menu.php';
                                     <option>off</option>
                                 </select>
                             </div>
+<<<<<<< HEAD
                             <br/><br/>
                             <div class="col-md-4">
                             <textarea name="descricao" class="form-control" placeholder="Descrição do Produto" cols="4"
@@ -135,6 +185,14 @@ include_once 'menu.php';
                             </textarea>
                             </div>
                             <input type="hidden" value="<?= $_GET['id'] ?>" name="id_publicidade"/>
+=======
+                            <div class="col-md-4">
+                            <textarea name="descricao" class="form-control" placeholder="Descrição do Produto" cols="4" rows="5" required >
+                                    <?= $view->descricao ?>
+                            </textarea>
+                            </div>
+
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
 
                         </div>
                         <br/>

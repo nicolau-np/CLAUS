@@ -54,6 +54,7 @@ include_once 'menu.php';
 
             <div class="col-lg-12">
                 <div class="contact-option">
+<<<<<<< HEAD
                     <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp; <a href="new_publicidade.php">Novo</a>
 
                     <?php
@@ -69,11 +70,29 @@ include_once 'menu.php';
                         <div class="alert alert-success">Eliminou publicidade com sucesso</div>
                         <?php
                     } ?>
+=======
+                    <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp;  <a href="new_publicidade.php">Novo</a>
+
+                    <?php
+                    if(isset($_GET['sms'])){?>
+                        <div class="alert alert-success">Actualização feita com sucesso</div>
+                        <?php
+                    }?>
+
+                    <?php
+                    if(isset($_GET['delete'])){?>
+                        <div class="alert alert-success">Eliminou publicidade com sucesso</div>
+                        <?php
+                    }?>
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
                     <table class="table table-bordered table-striped" style="color: white">
                         <thead>
                         <tr>
                             <th>Foto</th>
+<<<<<<< HEAD
                             <th>Titulo</th>
+=======
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
                             <th>Descrição</th>
                             <th>Estado</th>
                             <th>Operacões</th>
@@ -87,8 +106,12 @@ include_once 'menu.php';
 
                             ?>
                             <tr>
+<<<<<<< HEAD
                                 <td><img src="controller/upload/<?= $view->foto ?>" height="60px" width="100px"></td>
                                 <td><?= $view->title ?></td>
+=======
+                                <td><img src="controller/upload/<?=$view->foto?>" height="60px" width="100px"></td>
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
                                 <td><?= $view->descricao; ?></td>
                                 <td><?= $view->estado ?></td>
                                 <td>

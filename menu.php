@@ -18,11 +18,17 @@
                         $qtd_carrinho = $pegar_carrinho->rowCount();
 
                         if(isset($_SESSION['nome'])){
+<<<<<<< HEAD
                             if($_SESSION['nivel_acesso']!="admin"){
                     ?>
 
                         <label style="color: white;"><?=$_SESSION['nome']?> <small><a href="cart_list.php"> Carrinho <b><?=$qtd_carrinho?></b></a> </small></label>
                     <?php } } ?>
+=======
+                    ?>
+                        <label style="color: white;"><?=$_SESSION['nome']?> <small><a href="cart_list.php"> Carrinho <b><?=$qtd_carrinho?></b></a> </small></label>
+                    <?php } ?>
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
                         <a href="#">
                             <img src="img/logo1.png" alt="">
                         </a>
@@ -41,8 +47,13 @@
                             <?php
                                 }
                             ?>
+<<<<<<< HEAD
                             <li><a href="produtos.php">Loja </a></li>
                             <!--<li><a href="sobre.php">Sobre Nós</a></li>-->
+=======
+                            <li><a href="produtos.php">Serviços </a></li>
+                            <li><a href="sobre.php">Sobre Nós</a></li>
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
                             <li><a href="contacto.php">Contacto</a></li>
                             <?php
                                 if(!isset($_SESSION['nome'])){

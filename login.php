@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
     <title></title>
     <meta charset="UTF-8">
     <meta name="description" content="Hazze Template">
@@ -27,6 +28,34 @@
     </form>
 
 </div>
+=======
+   <title></title>
+   <meta charset="UTF-8">
+   <meta name="description" content="Hazze Template">
+   <meta name="keywords" content="Hazze, unica, creative, html">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" type="text/css" href="css/login.css">
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/css/font-awesone.min.css">
+</head>
+<body>
+
+  <div class="box_login">
+    <div class="cover">
+      
+    </div>
+    
+    <h1>Faça seu Login</h1>
+    <form method="POST" action="controller/login.controller.php">
+      <input type="text" name="user" id="user" placeholder="User">
+      <input type="password" name="password" id="password" placeholder="SENHA">
+
+      <button class="btn-login">ENTRAR</button>
+      <span class="msg_error"><i class="fa fa-exclamation-triangle" style="font-size: 16px; color: #ff6d6d; padding-right: : 5px;"></i><a href="create_acount.php" style="color: white;">Criar Conta</a></span>
+    </form>
+    
+  </div>
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
 
 </body>
 </html>

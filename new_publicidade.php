@@ -54,7 +54,11 @@ include_once 'menu.php';
 
             <div class="col-lg-12">
                 <div class="contact-option">
+<<<<<<< HEAD
                     <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp; <a href="publicidades.php">Listar</a>
+=======
+                    <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp; <a href="produto.php">Listar</a>
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
 
 
                     <?php
@@ -63,7 +67,10 @@ include_once 'menu.php';
                         $arquivo_tmp=$_FILES['foto']['tmp_name'];
                         $descricao = $_POST['descricao'];
                         $estado = $_POST['estado'];
+<<<<<<< HEAD
                         $title = $_POST['title'];
+=======
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
                         $foto = null;
 
                         if($arquivo==""):
@@ -79,7 +86,10 @@ include_once 'menu.php';
                         $objPublicidade->setFoto($foto);
                         $objPublicidade->setDescricao($descricao);
                         $objPublicidade->setEstado($estado);
+<<<<<<< HEAD
                         $objPublicidade->setTitle($title);
+=======
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
 
                         $resultado = $objPublicidade->insert(Connector::ReturnConnection());
                         if($resultado>0){
@@ -97,10 +107,15 @@ include_once 'menu.php';
 
                     <form enctype="multipart/form-data" method="POST" action="new_publicidade.php">
                         <div class="row">
+<<<<<<< HEAD
                             <div class="col-md-3">
                                 <input type="text" class="form-control" name="title" placeholder="Titulo" required/>
                             </div>
                             <div class="col-md-5"><input type="file" class="form-control" name="foto"/></div>
+=======
+
+                            <div class="col-md-4"><input type="file" class="form-control" name="foto"/></div>
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
 
 
                             <div class="col-md-3">
@@ -110,7 +125,10 @@ include_once 'menu.php';
                                     <option>off</option>
                                 </select>
                             </div>
+<<<<<<< HEAD
                             <br/><br/>
+=======
+>>>>>>> 1152a2790c4868e39c8e96bc3645da09e540b070
                             <div class="col-md-4">
                             <textarea name="descricao" class="form-control" placeholder="Descrição do Produto" cols="4" rows="5" required >
                                     Descrição
