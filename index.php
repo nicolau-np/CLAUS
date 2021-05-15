@@ -108,46 +108,38 @@ include_once 'menu.php';
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="portfolio-item set-bg large-item" data-setbg="B.jpg">
-                    <div class="pi-hover">
-                        <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
-                        <a href="B.jpg" class="search-icon image-popup"><i
-                                    class="fa fa-search"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="portfolio-item set-bg" data-setbg="A.jpeg">
-                    <div class="pi-hover">
-                        <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
-                        <a href="A.jpeg" class="search-icon image-popup"><i
-                                    class="fa fa-search"></i></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="portfolio-item set-bg" data-setbg="C.jpg">
-                            <div class="pi-hover">
-                                <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
-                                <a href="C.jpg" class="search-icon image-popup"><i
-                                            class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="portfolio-item set-bg" data-setbg="r.jpg">
-                            <div class="pi-hover">
-                                <a href="#" class="chain-icon"><i class="fa fa-chain"></i></a>
-                                <a href="D1.jpg" class="search-icon image-popup"><i
-                                            class="fa fa-search"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+       <div class="row">
+           <div class="col-md-12">
+               <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                   <ol class="carousel-indicators">
+                       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                   </ol>
+                   <div class="carousel-inner">
+                       <div class="carousel-item active">
+                           <img class="d-block w-100" height="400px" src="A.jpeg" alt="First slide"/>
+                           <div class="carousel-caption d-none d-md-block">
+                               <h5>Publicidades</h5>
+                               <p>Angola</p>
+                           </div>
+                       </div>
+                   </div>
+                   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                       <span class="sr-only">Previous</span>
+                   </a>
+                   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                       <span class="sr-only">Next</span>
+                   </a>
+               </div>
+           </div>
+       </div>
+
+
+
     </div>
 </section>
 <center><font color="gray" size = "6"><strong>Aqui temos a nossa equipa de gestão</strong></font></center>
