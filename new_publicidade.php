@@ -54,7 +54,7 @@ include_once 'menu.php';
 
             <div class="col-lg-12">
                 <div class="contact-option">
-                    <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp; <a href="produto.php">Listar</a>
+                    <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp; <a href="publicidades.php">Listar</a>
 
 
                     <?php
