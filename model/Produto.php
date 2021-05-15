@@ -162,12 +162,10 @@ class Produto
     }
 
 
-    public function select(PDO $connection)
-    {
-        $this->sql = "select *from produtos";
-        $CLAUS = $connection->prepare($this->sql);
-        $ret = $CLAUS->execute();
-        return $ret;
+public function delete(){
 
-    }
+        return "yes";
+}
+
+
 }

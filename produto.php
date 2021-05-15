@@ -69,6 +69,7 @@ include_once 'menu.php';
                             <th>Valor</th>
                             <th>Categoria</th>
                             <th>Descrição</th>
+                            <th>Estado</th>
                             <th>Operacões</th>
 
                         </tr>
@@ -85,6 +86,7 @@ include_once 'menu.php';
                                 <td><?= number_format($view->valor,2,',','.'); ?></td>
                                 <td><?= $view->categoria; ?></td>
                                 <td><?= $view->descricao; ?></td>
+                                <td><?= $view->estado ?></td>
                                 <td>
                                     <a href="edit_produto.php?id=<?= $view->id ?>" class="btn btn-primary btn-sm">Editar</a>
                                     <a href="delete_produto.php?id=<?= $view->id ?>" class="btn btn-danger btn-sm">Eliminar</a>
