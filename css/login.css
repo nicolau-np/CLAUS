@@ -1,74 +1,74 @@
 *{padding: 0; margin: 0; box-sizing: border-box;}
 
-body{ 
+body{
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-family: 'Arial';
 	padding: 0px 15px;
- }
+}
 
- .box_login{
- 	width: 500px;
- 	height: 500px;
- 	background: #6D4BFC;
- 	border: 0;
- 	border-radius: 10px 10px 10px 10px;
- }
+.box_login{
+	width: 500px;
+	height: 500px;
+	background: #2d2c2e;
+	border: 0;
+	border-radius: 10px 10px 10px 10px;
+}
 
- .box_login .cover{
- 	height: 230px;
- 	background: url(amor.png);
- 	background-size: 100% 100%;
- 	background-repeat: no-repeat;	
- }
+.box_login .cover{
+	height: 230px;
+	background: url(amor.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
 
- h1{
- 	font-size: 24px;
- 	color: rgb(119, 11, 11);
- 	text-align: left;
- 	margin: 15px 0px 20px 15px;
- 	font-family: 'Arial';
-	 font-weight: 500;
-	 text-align: center;
- }
+h1{
+	font-size: 24px;
+	color: rgb(218, 221, 21);
+	text-align: left;
+	margin: 15px 0px 20px 15px;
+	font-family: 'Arial';
+	font-weight: 500;
+	text-align: center;
+}
 
- form input{
- 	margin: 0px 20px;
- 	width: calc(100% - 40px);
- 	padding: 10px 15px;
- 	border: 0;
- 	border-radius: 10px;
- 	margin-bottom: 20px;
- 	text-align: center;
- 	color: #6d4bfc;
+form input{
+	margin: 0px 20px;
+	width: calc(100% - 40px);
+	padding: 10px 15px;
+	border: 0;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+	color: #222124;
 
- }
+}
 
- form .btn-login{
- 	margin: 0px 20px;
- 	width: calc(100% - 40px);
- 	background: #3ceb88;
- 	color: #fff;
- 	padding: 10px 15px;
- 	border: 0;
- 	border-radius: 10px;
- 	margin-bottom: 20px;
+form .btn-login{
+	margin: 0px 20px;
+	width: calc(100% - 40px);
+	background: #094697;
+	color: rgb(131, 8, 8);
+	padding: 5px 5px;
+	border: 0;
+	border-radius: 10px;
+	margin-bottom: 20px;
 
- }
+}
 
- .msg_error{
- 	color: #ff6d6d;
- 	display: flex;
- 	justify-content: center;
- }
+.msg_error{
+	color: #ff6d6d;
+	display: flex;
+	justify-content: center;
+}
 
- @media (min-width:480px){
- 	.box_login .cover{
- 	background: url(amor.png);
- 	background-size: 100% 100%;
- 	background-repeat: no-repeat;	
- }
+@media (min-width:480px){
+	.box_login .cover{
+		background-image: url('amor.png');
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
 
- }
+}
