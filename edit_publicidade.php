@@ -4,7 +4,6 @@ include_once "model/Publicidade.php";
 
 Connector::ReturnConnection();
 if(!isset($_GET['id'])){
-    //header('location:produto.php');
     $ids = $_SESSION['idS'];
 }else{
     $_SESSION['idS'] = $_GET['id'];
@@ -75,6 +74,7 @@ include_once 'menu.php';
                         $arquivo_tmp=$_FILES['foto']['tmp_name'];
                         $descricao = $_POST['descricao'];
                         $estado = $_POST['estado'];
+                        $id = $_POST['id_publicidade'];
                         $foto = null;
 
                         if($arquivo==""):
@@ -92,6 +92,7 @@ include_once 'menu.php';
                         $objPublicidade->setFoto($foto);
                         $objPublicidade->setDescricao($descricao);
                         $objPublicidade->setEstado($estado);
+                        $objPublicidade->setId($id);
 
                         $resultado = $objPublicidade->update(Connector::ReturnConnection());
                         if($resultado=="yes"){
@@ -125,7 +126,7 @@ include_once 'menu.php';
                                     <?= $view->descricao ?>
                             </textarea>
                             </div>
-
+                            <input type="hidden" value="<?= $_GET['id'] ?>" name="id_publicidade"/>
 
                         </div>
                         <br/>
