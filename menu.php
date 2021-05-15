@@ -39,7 +39,7 @@
                             <?php
                                 }
                             ?>
-                            <li><a href="produtos.php">Serviços </a></li>
+                            <li><a href="produtos.php">Loja </a></li>
                             <li><a href="sobre.php">Sobre Nós</a></li>
                             <li><a href="contacto.php">Contacto</a></li>
                             <?php
