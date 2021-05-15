@@ -9,4 +9,89 @@
 class Publicidade
 {
 
+    private $id;
+    private $foto;
+    private $descricao;
+    private $estado;
+
+    public $sql;
+    public $comando;
+
+    /**
+     * @return mixed
+     */
+    public function getFoto()
+    {
+        return $this->foto;
+    }
+
+    /**
+     * @param mixed $foto
+     */
+    public function setFoto($foto)
+    {
+        $this->foto = $foto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    /**
+     * @param mixed $descricao
+     */
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param mixed $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
+    public function insert(PDO $connection){
+            $this->sql = "insert into publicidades  (foto, descricao, estado) values(?,?,?)";
+            $this->comando = $connection->prepare($this->sql);
+            $this->comando->execute(array(
+                $this->getFoto(),
+                $this->getDescricao(),
+                $this->getEstado(),
+            ));
+        return $connection->lastInsertId();
+
+    }
+
 }
