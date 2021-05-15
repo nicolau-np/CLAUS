@@ -28,9 +28,9 @@ include "controller/sessao_controller.controller.php";
 
 <body>
     <!-- Preloder da página -->
-    <!--<div id="preloder">
+    <div id="preloder">
         <div class="loader"></div>
-    </div>-->
+    </div>
 
     <!-- Header Section Begin -->
     <?php
