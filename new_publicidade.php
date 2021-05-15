@@ -79,6 +79,7 @@ include_once 'menu.php';
                         $objPublicidade->setFoto($foto);
                         $objPublicidade->setDescricao($descricao);
                         $objPublicidade->setEstado($estado);
+                        $objPublicidade->setTitle($title);
 
                         $resultado = $objPublicidade->insert(Connector::ReturnConnection());
                         if($resultado>0){
@@ -96,8 +97,10 @@ include_once 'menu.php';
 
                     <form enctype="multipart/form-data" method="POST" action="new_publicidade.php">
                         <div class="row">
-
-                            <div class="col-md-4"><input type="file" class="form-control" name="foto"/></div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="title" placeholder="Titulo" required/>
+                            </div>
+                            <div class="col-md-5"><input type="file" class="form-control" name="foto"/></div>
 
 
                             <div class="col-md-3">
@@ -107,6 +110,7 @@ include_once 'menu.php';
                                     <option>off</option>
                                 </select>
                             </div>
+                            <br/><br/>
                             <div class="col-md-4">
                             <textarea name="descricao" class="form-control" placeholder="Descrição do Produto" cols="4" rows="5" required >
                                     Descrição
