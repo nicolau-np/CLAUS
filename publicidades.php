@@ -3,7 +3,7 @@ include "controller/sessao_controller.controller.php";
 
 Connector::ReturnConnection();
 $estado = "delete";
-$produtos = Connector::ReturnConnection()->prepare("SELECT * FROM produtos where estado!=? order by produto asc");
+$produtos = Connector::ReturnConnection()->prepare("SELECT * FROM publicidades where estado!=? order by produto asc");
 $produtos->execute(array($estado));
 ?>
 <!DOCTYPE html>

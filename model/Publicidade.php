@@ -106,4 +106,15 @@ class Publicidade
         return "yes";
 
     }
+
+    public function delete(PDO $connection){
+        $this->sql = "update publicidades set  estado=? where id=?";
+        $this->comando = $connection->prepare($this->sql);
+        $this->comando->execute(array(
+            $this->getEstado(),
+            $this->getId(),
+        ));
+        return "yes";
+
+    }
 }
