@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 15/05/2021
- * Time: 09:05
- */
+include "controller/sessao_controller.controller.php";
+include_once "model/Produto.php";
+
+
+Connector::ReturnConnection();
+
+$_GET['id'];
+

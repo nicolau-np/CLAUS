@@ -162,8 +162,13 @@ class Produto
     }
 
 
-public function delete(){
-
+public function delete(PDO $connection){
+    $this->sql = "update produtos set estado = ? where id=?";
+    $CLAUS = $connection->prepare($this->sql);
+    $CLAUS->execute(array(
+        $this->getEstado(),
+        $this->getId(),
+    ));
         return "yes";
 }
 
