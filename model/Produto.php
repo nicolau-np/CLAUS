@@ -158,8 +158,7 @@ class Produto
             $this->getEstado(),
             $this->getId(),
         ));
-        //return "yes";
-        return $this->getId();
+        return "yes";
     }
 
 

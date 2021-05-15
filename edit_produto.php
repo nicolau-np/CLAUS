@@ -5,11 +5,15 @@ include_once "model/Produto.php";
 
 Connector::ReturnConnection();
 if(!isset($_GET['id'])){
-    header('location:produto.php');
+    //header('location:produto.php');
+    $ids = $_SESSION['idS'];
+}else{
+    $_SESSION['idS'] = $_GET['id'];
+    $ids = $_GET['id'];
 }
 
 $produtos = Connector::ReturnConnection()->prepare("SELECT * FROM produtos where id=?");
-$produtos->execute(array($_GET['id']));
+$produtos->execute(array($_SESSION['idS']));
 $view = $produtos->fetch(PDO::FETCH_OBJ);
 
 $objProduto = new Produto();
@@ -76,18 +80,19 @@ include_once 'menu.php';
                         $descricao = $_POST['descricao'];
                         $estado = $_POST['estado'];
                         $id_produto = $_POST['id_produto'];
-
+                        $foto = null;
 
                         if($arquivo==""):
-                            $foto=$view->foto;
+
+                        $foto = $view->foto;
                         else:
                             $foto=$arquivo;
                             //mover a foto para a pasta
                             $destino='controller/upload/'.$arquivo;
                             $arquivo_tmp1=$arquivo_tmp;
-                            move_uploaded_file($arquivo_tmp1,$destino);
                             unlink('controller/upload/'.$view->foto);
-                        endif;
+                            move_uploaded_file($arquivo_tmp1,$destino);
+                         endif;
 
                         $objProduto->setProduto($produto);
                         $objProduto->setValor($valor);
@@ -97,10 +102,12 @@ include_once 'menu.php';
                         $objProduto->setEstado($estado);
                         $objProduto->setId($id_produto);
 
-                        $resultado = $objProduto->edit(Connector::ReturnConnection());
+                       $resultado = $objProduto->edit(Connector::ReturnConnection());
                         if($resultado=="yes"){
                             header("location: produto.php?sms=ok");
                         }
+
+
 
                     }
                     ?>
