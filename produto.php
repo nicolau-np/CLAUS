@@ -61,6 +61,12 @@ include_once 'menu.php';
                         <div class="alert alert-success">Actualização feita com sucesso</div>
                         <?php
                     }?>
+
+                    <?php
+                    if(isset($_GET['delete'])){?>
+                        <div class="alert alert-success">Eliminou produto com sucesso</div>
+                        <?php
+                    }?>
                     <table class="table table-bordered table-striped" style="color: white">
                         <thead>
                         <tr>
