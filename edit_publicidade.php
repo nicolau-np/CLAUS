@@ -78,12 +78,14 @@ include_once 'menu.php';
                         $foto = null;
 
                         if($arquivo==""):
-                            $foto="none.jpg";
+
+                            $foto = $view->foto;
                         else:
                             $foto=$arquivo;
                             //mover a foto para a pasta
                             $destino='controller/upload/'.$arquivo;
                             $arquivo_tmp1=$arquivo_tmp;
+                            unlink('controller/upload/'.$view->foto);
                             move_uploaded_file($arquivo_tmp1,$destino);
                         endif;
 
@@ -91,9 +93,9 @@ include_once 'menu.php';
                         $objPublicidade->setDescricao($descricao);
                         $objPublicidade->setEstado($estado);
 
-                        $resultado = $objPublicidade->insert(Connector::ReturnConnection());
-                        if($resultado>0){
-                            header("location: new_publicidade.php?sms=ok");
+                        $resultado = $objPublicidade->update(Connector::ReturnConnection());
+                        if($resultado=="yes"){
+                            header("location: publicidades.php?sms=ok");
                         }
 
                     }
@@ -105,7 +107,7 @@ include_once 'menu.php';
                         <?php
                     }?>
 
-                    <form enctype="multipart/form-data" method="POST" action="new_publicidade.php">
+                    <form enctype="multipart/form-data" method="POST" action="edit_publicidade.php">
                         <div class="row">
 
                             <div class="col-md-4"><input type="file" class="form-control" name="foto"/></div>
