@@ -54,23 +54,26 @@ include_once 'menu.php';
 
             <div class="col-lg-12">
                 <div class="contact-option">
-                    <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp;  <a href="new_publicidade.php">Novo</a>
+                    <h4>Publicidades</h4> &nbsp;&nbsp;&nbsp;&nbsp; <a href="new_publicidade.php">Novo</a>
 
                     <?php
-                    if(isset($_GET['sms'])){?>
+                    if (isset($_GET['sms'])) {
+                        ?>
                         <div class="alert alert-success">Actualização feita com sucesso</div>
                         <?php
-                    }?>
+                    } ?>
 
                     <?php
-                    if(isset($_GET['delete'])){?>
+                    if (isset($_GET['delete'])) {
+                        ?>
                         <div class="alert alert-success">Eliminou publicidade com sucesso</div>
                         <?php
-                    }?>
+                    } ?>
                     <table class="table table-bordered table-striped" style="color: white">
                         <thead>
                         <tr>
                             <th>Foto</th>
+                            <th>Titulo</th>
                             <th>Descrição</th>
                             <th>Estado</th>
                             <th>Operacões</th>
@@ -84,7 +87,8 @@ include_once 'menu.php';
 
                             ?>
                             <tr>
-                                <td><img src="controller/upload/<?=$view->foto?>" height="60px" width="100px"></td>
+                                <td><img src="controller/upload/<?= $view->foto ?>" height="60px" width="100px"></td>
+                                <td><?= $view->title ?></td>
                                 <td><?= $view->descricao; ?></td>
                                 <td><?= $view->estado ?></td>
                                 <td>
