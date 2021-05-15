@@ -1,6 +1,6 @@
 <?php
 define("USER","root");
-define("PASSWORD","");
+define("PASSWORD","Np@2015b");
 define("SERVER","mysql:host=localhost;dbname=claus");
 
 class Connector{
