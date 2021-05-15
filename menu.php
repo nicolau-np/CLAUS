@@ -18,9 +18,11 @@
                         $qtd_carrinho = $pegar_carrinho->rowCount();
 
                         if(isset($_SESSION['nome'])){
+                            if($_SESSION['nivel_acesso']!="admin"){
                     ?>
+
                         <label style="color: white;"><?=$_SESSION['nome']?> <small><a href="cart_list.php"> Carrinho <b><?=$qtd_carrinho?></b></a> </small></label>
-                    <?php } ?>
+                    <?php } } ?>
                         <a href="#">
                             <img src="img/logo1.png" alt="">
                         </a>
