@@ -3,8 +3,20 @@ include "controller/sessao_controller.controller.php";
 include_once "model/Publicidade.php";
 
 Connector::ReturnConnection();
+if(!isset($_GET['id'])){
+    //header('location:produto.php');
+    $ids = $_SESSION['idS'];
+}else{
+    $_SESSION['idS'] = $_GET['id'];
+    $ids = $_GET['id'];
+}
+
+$publicidades = Connector::ReturnConnection()->prepare("SELECT * FROM publicidades where id=?");
+$publicidades->execute(array($_SESSION['idS']));
+$view = $publicidades->fetch(PDO::FETCH_OBJ);
 
 $objPublicidade = new Publicidade();
+
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -15,7 +27,7 @@ $objPublicidade = new Publicidade();
     <meta name="keywords" content="Hazze, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Claus | Nova Publicidade</title>
+    <title>Claus | Editar Publicidade</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600,700,800,900&display=swap"
@@ -101,14 +113,14 @@ include_once 'menu.php';
 
                             <div class="col-md-3">
                                 <select name="estado" class="form-control" required>
-                                    <option>Estado</option>
+                                    <option><?= $view->estado ?></option>
                                     <option>on</option>
                                     <option>off</option>
                                 </select>
                             </div>
                             <div class="col-md-4">
                             <textarea name="descricao" class="form-control" placeholder="Descrição do Produto" cols="4" rows="5" required >
-                                    Descrição
+                                    <?= $view->descricao ?>
                             </textarea>
                             </div>
 
