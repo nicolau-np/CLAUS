@@ -85,12 +85,11 @@ include_once 'menu.php';
                             ?>
                             <tr>
                                 <td><img src="controller/upload/<?=$view->foto?>" height="60px" width="100px"></td>
-                                <td><?= $view->produto; ?></td>
                                 <td><?= $view->descricao; ?></td>
                                 <td><?= $view->estado ?></td>
                                 <td>
                                     <a href="edit_publicidade.php?id=<?= $view->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                    <a href="delete_publicidade.php?id=<?= $view->id ?>" class="btn btn-danger btn-sm">Eliminar</a>
+
 
                                 </td>
                             </tr>

@@ -33,9 +33,9 @@ $objPublicidade = new Publicidade();
 
 <body>
 <!-- Page Preloder -->
-<div id="preloder">
+<!--<div id="preloder">
     <div class="loader"></div>
-</div>
+</div>-->
 
 <!-- Header Section Begin -->
 <?php
@@ -75,9 +75,9 @@ include_once 'menu.php';
                             move_uploaded_file($arquivo_tmp1,$destino);
                         endif;
 
-                        $objProduto->setFoto($foto);
-                        $objProduto->setDescricao($descricao);
-                        $objProduto->setEstado($estado);
+                        $objPublicidade->setFoto($foto);
+                        $objPublicidade->setDescricao($descricao);
+                        $objPublicidade->setEstado($estado);
 
                         $resultado = $objPublicidade->insert(Connector::ReturnConnection());
                         if($resultado>0){
@@ -93,7 +93,7 @@ include_once 'menu.php';
                         <?php
                     }?>
 
-                    <form enctype="multipart/form-data" method="POST" action="new_produto.php">
+                    <form enctype="multipart/form-data" method="POST" action="new_publicidade.php">
                         <div class="row">
 
                             <div class="col-md-4"><input type="file" class="form-control" name="foto"/></div>
