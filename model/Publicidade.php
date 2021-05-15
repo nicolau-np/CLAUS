@@ -94,4 +94,16 @@ class Publicidade
 
     }
 
+    public function update(PDO $connection){
+        $this->sql = "update publicidades set  foto=?, descricao=?, estado=? where id=?";
+        $this->comando = $connection->prepare($this->sql);
+        $this->comando->execute(array(
+            $this->getFoto(),
+            $this->getDescricao(),
+            $this->getEstado(),
+            $this->getId(),
+        ));
+        return "yes";
+
+    }
 }
