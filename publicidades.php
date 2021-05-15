@@ -3,8 +3,8 @@ include "controller/sessao_controller.controller.php";
 
 Connector::ReturnConnection();
 $estado = "delete";
-$produtos = Connector::ReturnConnection()->prepare("SELECT * FROM publicidades where estado!=? order by produto asc");
-$produtos->execute(array($estado));
+$publicidade = Connector::ReturnConnection()->prepare("SELECT * FROM publicidades where estado!=? order by id desc");
+$publicidade->execute(array($estado));
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -54,7 +54,7 @@ include_once 'menu.php';
 
             <div class="col-lg-12">
                 <div class="contact-option">
-                    <h4>Produtos</h4> &nbsp;&nbsp;&nbsp;&nbsp;  <a href="new_produto.php">Novo</a>
+                    <h4>Produtos</h4> &nbsp;&nbsp;&nbsp;&nbsp;  <a href="new_publicidade.php">Novo</a>
 
                     <?php
                     if(isset($_GET['sms'])){?>
@@ -80,19 +80,17 @@ include_once 'menu.php';
 
                         <tbody>
                         <?php
-                        while ($view = $produtos->fetch(PDO::FETCH_OBJ)) {
+                        while ($view = $publicidade->fetch(PDO::FETCH_OBJ)) {
 
                             ?>
                             <tr>
                                 <td><img src="controller/upload/<?=$view->foto?>" height="60px" width="100px"></td>
                                 <td><?= $view->produto; ?></td>
-                                <td><?= number_format($view->valor,2,',','.'); ?></td>
-                                <td><?= $view->categoria; ?></td>
                                 <td><?= $view->descricao; ?></td>
                                 <td><?= $view->estado ?></td>
                                 <td>
-                                    <a href="edit_produto.php?id=<?= $view->id ?>" class="btn btn-primary btn-sm">Editar</a>
-                                    <a href="delete_produto.php?id=<?= $view->id ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                                    <a href="edit_publicidade.php?id=<?= $view->id ?>" class="btn btn-primary btn-sm">Editar</a>
+                                    <a href="delete_publicidade.php?id=<?= $view->id ?>" class="btn btn-danger btn-sm">Eliminar</a>
 
                                 </td>
                             </tr>
