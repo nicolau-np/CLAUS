@@ -1,5 +1,15 @@
 <?php
 include "controller/sessao_controller.controller.php";
+include_once "model/Publicidade.php";
+
+Connector::ReturnConnection();
+
+$estado = "on";
+$publicidade = Connector::ReturnConnection()->prepare("SELECT * FROM publicidades where estado = ?  order by id desc limit 0,3");
+$publicidade->execute(array(
+    $estado
+));
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,6 +34,26 @@ include "controller/sessao_controller.controller.php";
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        .carousel-caption{
+            background-color: #0b0b0b;
+            opacity: 0.5;
+        }
+
+        .carousel-caption h5{
+            color: #fff;
+            font-weight: bold;
+            font-size: 22px;
+
+        }
+
+        .carousel-caption p{
+            color: #fff;
+            font-weight: bold;
+            font-size: 15px;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -43,7 +73,7 @@ include_once 'menu.php';
                 <div class="hs-text">
                     <h2><font color="black">Claus Lda</font></h2>
 
-                    <img src=amor.png width="150px" text-align="" border-radius = "13px">
+                    <img src=amor.png width="150px" text-align="" border-radius="13px">
                     <p><font color="black"><strong>Sempre para saberes das novidades</strong></font></p>
                     <a href="produtos.php" class="primary-btn">Conheça nossos Produtos</a>
                     <img scr="amor.png">
@@ -53,8 +83,6 @@ include_once 'menu.php';
         </div>
     </div>
 </section>
-
-
 
 
 <section class="services-section spad">
@@ -97,7 +125,6 @@ include_once 'menu.php';
 </section>
 
 
-
 <section class="portfolio-section spad">
     <div class="container">
         <div class="row">
@@ -109,41 +136,49 @@ include_once 'menu.php';
             </div>
         </div>
 
-       <div class="row">
-           <div class="col-md-12">
-               <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                   <ol class="carousel-indicators">
-                       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                   </ol>
-                   <div class="carousel-inner">
-                       <div class="carousel-item active">
-                           <img class="d-block w-100" height="400px" src="A.jpeg" alt="First slide"/>
-                           <div class="carousel-caption d-none d-md-block">
-                               <h5>Publicidades</h5>
-                               <p>Angola</p>
-                           </div>
-                       </div>
-                   </div>
-                   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                       <span class="sr-only">Previous</span>
-                   </a>
-                   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                       <span class="sr-only">Next</span>
-                   </a>
-               </div>
-           </div>
-       </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
 
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <?php
+                        $i = 0;
+                        while ($view = $publicidade->fetch(PDO::FETCH_OBJ)) {
+                            $i++;
+                            ?>
+                            <div class="carousel-item <?php if($i==1): echo "active"; endif;?>">
+                                <img class="d-block w-100" height="400px" src="controller/upload/<?= $view->foto ?>"
+                                     alt="First slide"/>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Publicidades</h5>
+                                    <p><?= $view->descricao ?></p>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
 
 
     </div>
 </section>
-<center><font color="gray" size = "6"><strong>Aqui temos a nossa equipa de gestão</strong></font></center>
-
+<center><font color="gray" size="6"><strong>Aqui temos a nossa equipa de gestão</strong></font></center>
 
 
 <section class="member-section spad">
@@ -151,7 +186,6 @@ include_once 'menu.php';
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-
 
 
                     <div class="blog-section latest-blog spad">
